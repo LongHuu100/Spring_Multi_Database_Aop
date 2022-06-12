@@ -48,13 +48,16 @@ public class MemoizeAspect {
         Object[] args = pjp.getArgs();
         if (args != null) {
             Object response = cache.get(Arrays.asList(args));
+            /* Nếu đã có trong cache thì trả luôn kết quả trong cache */
             if (response != null){
                 return response;
             }
         }
+        /* Method xử lý và trả kết quả */
         Object obj = pjp.proceed();
         if (obj instanceof Order && obj != null) {
             cache.put(Arrays.asList(args), obj);
+            /* Thay đổi kết quả trả về của method */
             obj.setCode("FixCode_JoinPoint");
         }
         return obj;

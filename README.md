@@ -55,10 +55,10 @@ public class MemoizeAspect {
         }
         /* Method xử lý và trả kết quả */
         Object obj = pjp.proceed();
-        if (obj instanceof Order && obj != null) {
-            cache.put(Arrays.asList(args), obj);
+        if (obj != null && obj instanceof Order od) {
+            cache.put(Arrays.asList(args), od);
             /* Thay đổi kết quả trả về của method */
-            obj.setCode("FixCode_JoinPoint");
+            od.setCode("FixCode_JoinPoint");
         }
         return obj;
     }

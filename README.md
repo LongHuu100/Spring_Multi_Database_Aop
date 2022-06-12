@@ -2,11 +2,14 @@ Mục đích của AOP (Lập trình hướng cạnh) để thay đổi logic c�
 
 Trong ví dụ này là chạy code chuyển giữa nhiều database thông qua AOP Pointcut.
 
-```
-/* Tạo PointCut cho annotation là com.dynamicdatasource.demo.config.SwitchDataSource.
- * Ở đâu dùng annotation (@SwitchDataSource) này thì sẽ được áp dụng point cut như sau.
- * Chạy hàm before(JoinPoint joinPoint) --> Chạy logic tại nơi khai báo annotation --> Chạy void after(JoinPoint point)
+/* Tạo PointCut cho annotation là com.dynamicdatasource.demo.config.SwitchDataSource. \
+ * Ở đâu dùng annotation (@SwitchDataSource) này thì sẽ được áp dụng point cut như sau. \
+ * 1. Chạy hàm before(JoinPoint joinPoint) để chuyển sang database khác. \
+ * 2. Chạy logic tại nơi khai báo annotation. \
+ * 3. Chạy void after(JoinPoint point) để chuyển về database mặc định. \
 */
+
+```
 @Pointcut("@annotation(com.dynamicdatasource.demo.config.SwitchDataSource)")
 public void annotationPointCut() {
     //default function

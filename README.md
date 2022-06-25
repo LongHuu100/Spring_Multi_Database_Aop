@@ -1,6 +1,8 @@
 Mục đích của AOP (Lập trình hướng cạnh) để thay đổi logic của ứng dụng mà không cần thay đổi code của modul có sẵn thông qua việc chạy các middelware chèn vào trước và sau logic.
 
 Trong ví dụ này là chạy code chuyển giữa nhiều database thông qua AOP Pointcut.
+### Kịch bản là các user có uID từ 1-1.000.000 lưu trong DB1, từ 1.000.000 đến 3.000.000 lưu trên DB2.
+Để xử lý tốt kịch bản này và dễ thay đổi khi cần thì AOP là phương pháp tối ưu.
 
 Tạo PointCut cho annotation là com.dynamicdatasource.demo.config.SwitchDataSource.
 * Ở đâu dùng annotation (@SwitchDataSource) này thì sẽ được áp dụng point cut như sau.
